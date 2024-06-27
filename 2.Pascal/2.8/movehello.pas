@@ -40,9 +40,17 @@ end;
 procedure MoveMessage(var x, y: integer; msg: string; dx, dy: integer);
 begin
 	HideMessage(x, y, msg);
-	x := x + dx;
-	y := y + dy;
-	ShowMessage(x, y, msg);
+	if ((x + dx + length(msg)) > ScreenWidth) or 
+	(y + dy > ScreenHeight) or (x + dx < 1) or (y + dy < 1) then
+	begin
+		ShowMessage(x, y, msg);
+	end
+	else
+	begin
+		x := x + dx;
+		y := y + dy;
+		ShowMessage(x, y, msg);
+	end
 end;
 
 var
