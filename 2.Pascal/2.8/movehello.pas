@@ -44,13 +44,11 @@ begin
 	(y + dy > ScreenHeight) or (x + dx < 1) or (y + dy < 1) then
 	begin
 		ShowMessage(x, y, msg);
-	end
-	else
-	begin
-		x := x + dx;
-		y := y + dy;
-		ShowMessage(x, y, msg);
-	end
+		exit;
+	end;
+	x := x + dx;
+	y := y + dy;
+	ShowMessage(x, y, msg);
 end;
 
 var
